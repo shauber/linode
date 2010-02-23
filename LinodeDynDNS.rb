@@ -11,7 +11,6 @@ IP_CHECK = 'checkip.dyndns.com'
 
 linode = Linode.new(:api_key => APIKEY)
 res = linode.domain.resource.list(:DomainId => DOMAIN_ID, :ResourceId => RESOURCE_ID)[0]
-puts res.target
 
 Net::HTTP.start(IP_CHECK, 80) do |http|
   myIP = http.get('/').body.match(/[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}/)
